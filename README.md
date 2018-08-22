@@ -21,8 +21,6 @@ None.
 Example Playbook
 ----------------
 
-
----
 - hosts: all
  tasks:
  - name: Run Windows Updates.
