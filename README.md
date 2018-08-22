@@ -25,7 +25,7 @@ Example Playbook
   tasks:
   - name: Run Windows Updates.
     include_role:
-     name: windows_update
+     name: pawansawalani.ansible_role_windows_update
 ```
 License
 -------
