@@ -1,38 +1,36 @@
-Role Name
+windows_update
 =========
 
-A brief description of the role goes here.
+Ansible role to search for windows updates, install the updates and then reboot the server when reboot is required after installing the updates.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+The target Windows machines must have whitelisted network access to download updates.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+By default, this role installs the default categories of updates provided by the Ansible win_updates module. Change win_updates_category_names to install alternate categories of updates.
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None.
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+---
+- hosts: all
+ tasks:
+ - name: Run Windows Updates.
+   include_role:
+    name: windows_update
 
 License
 -------
 
 BSD
 
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
