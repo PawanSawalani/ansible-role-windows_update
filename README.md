@@ -21,11 +21,11 @@ None.
 Example Playbook
 ----------------
 
-- hosts: all
- tasks:
- - name: Run Windows Updates.
-   include_role:
-    name: windows_update
+- hosts: servers
+  tasks:
+  - name: Run Windows Updates.
+    include_role:
+     name: windows_update
 
 License
 -------
