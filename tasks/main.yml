@@ -26,4 +26,3 @@
   win_reboot:
     reboot_timeout_sec: 1500
   when: update_result.reboot_required
-
