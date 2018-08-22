@@ -1,0 +1,29 @@
+---
+
+#Reboot if required before installing new updates
+- name: If reboot required before checking and installing new updates, reboot the host.
+  win_reboot:
+   reboot_timeout_sec: 1500
+  when: ansible_reboot_pending
+
+#Check for missing updates
+- name: Check for missing updates.
+  win_updates: state=searched
+  register: update_count
+
+#List the missing updates
+- name: List the updates.
+  debug: var=update_count
+
+#Install Updates
+- name: Install all Critical and security updates.
+  win_updates:
+    category_names: "{{update_category_names}}"
+    state: installed
+  register: update_result
+
+- name: Reboot host after installing updates.
+  win_reboot:
+    reboot_timeout_sec: 1500
+  when: update_result.reboot_required
+
