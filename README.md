@@ -20,13 +20,13 @@ None.
 
 Example Playbook
 ----------------
-
-- hosts: servers
+```
+- hosts: all
   tasks:
   - name: Run Windows Updates.
     include_role:
      name: windows_update
-
+```
 License
 -------
 
